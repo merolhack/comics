@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: comics
+
+# Expose Actuator HTTP REST Endpoints
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,caches,httptrace,env
+  endpoint:
+    health:
+      show-details: always
+
+# Tomcat server
+server:
+  port : 8080
+  servlet:
+    session:
+      timeout: 60
+  error:
+    whitelabel:
+      enabled: false
+
+logging:
+  file:
+    max-size: 10MB
+  level:
+    com.marvel.comics: INFO
+    org.springframework: INFO
+    org.springframework.web: INFO
+    org.springframework.security: INFO
+    org.springframework.boot.autoconfigure: INFO
+  pattern:
+    console: "%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"
